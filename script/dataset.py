@@ -25,7 +25,7 @@ class Img_DataSet(Dataset):
         return len(self.img_paths)
 
     def get_img_path(self):
-        file = pd.read_table('./train_master.tsv',sep = "\t",usecols = ['id','expression'])
+        file = pd.read_table('./train.tsv',sep = "\t",usecols = ['id','expression'])
         img_paths = list(file['id'])
         labels = list(file['expression'])
         return img_paths,labels
@@ -34,7 +34,7 @@ class Img_DataSet(Dataset):
         label = self.le.fit_transform(self.labels)
         return label
 
-    def label_decode(self,label_list)
+    def label_decode(self,label_list):
         label = self.le.inverse_transform(label_list)
         return label
 
